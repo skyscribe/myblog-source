@@ -2,10 +2,10 @@
 project_type = :stand_alone
 
 # Publishing paths
-http_path = "/"
-http_images_path = "/images"
-http_fonts_path = "/fonts"
-css_dir = "public/stylesheets"
+http_path = "/skyscribe/"
+http_images_path = "/skyscribe/images"
+http_fonts_path = "/skyscribe/fonts"
+css_dir = "public/skyscribe/stylesheets"
 
 # Local development paths
 sass_dir = "sass"
