@@ -83,4 +83,3 @@ koans 会遍历每一个test case直到全部完毕，大概需要2个小时以�
 - regular expresion的和python极为相似
 - 变量的scope用$/@等符号来标注，也算容易记忆
 
-
