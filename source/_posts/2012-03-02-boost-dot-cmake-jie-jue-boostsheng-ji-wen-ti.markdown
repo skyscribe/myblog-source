@@ -20,13 +20,13 @@ tags: [c++, boost]
 CMake + GIT +Spinx 确实够酷了。
 
 编译起来可以充分利用强大的CMake了：
-{% codeblock lang:shell %}
+``` bash
 git clone git://gitorious.org/boost/cmake.git src
 cd src
 git checkout <TAG>    //TAG==1.41.0.cmake0
 mkdir bld
 cd bld/
 cmake ../
-{% endcodeblock %}
+```
 
 如果需要按需编译某些库，只需用`make edit_cache`修改cache即可。
