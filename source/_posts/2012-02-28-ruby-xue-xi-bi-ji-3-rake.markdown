@@ -3,7 +3,7 @@ layout: post
 title: "Ruby学习笔记-3 Rake"
 date: 2012-02-28 20:19
 comments: true
-categories: [study, build, rake, ruby]
+categories: [study, build, rake, ruby, 学习笔记]
 tags: [study, ruby]
 ---
 
