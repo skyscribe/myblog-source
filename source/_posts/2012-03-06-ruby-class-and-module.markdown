@@ -8,6 +8,8 @@ categories: [学习笔记, ruby]
 
 Class和Module是Ruby中的两个重要概念。作为一个纯**OO**语言，class的概念自然容易理解，即为object的抽象；而module则明显有别于其它语言地提供了mixin方法来解决多继承缺失带来的不便 - 集成多个基类的接口并维持[IS-A关系](http://en.wikipedia.org/wiki/Is-a)以及[LSP替换](http://en.wikipedia.org/wiki/Liskov_substitution_principle).
 
+<!--more-->
+
 ## 相互关系和一些基本类
 
 ruby中存在一些基础的类（或者是MetaClass)，包括: `[Class, Module, Kernel, Object, BasicObject]`, 且看如下测试：
