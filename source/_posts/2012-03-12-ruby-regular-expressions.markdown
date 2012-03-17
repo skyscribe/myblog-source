@@ -61,5 +61,37 @@ Ruby中的正则表达式有 2 种方式：
 ```
 - 匹配： 用 **~** 来完成匹配
 
+## Regexp 对象 
+
+基本的正则表达式语法实际上对应着一个regexp对象，Regexp类定义了`match`函数，其返回一个MatchData 对象，即：
+``` ruby
+obj = /testRege[xX]p/i
+obj.class #Regexp
+mat = obj.match('testRegexp')
+mat.class #MatchData
+mat.regexp #/testRege[xX]p/i
+```
+
+MatchData 对象中的`length`可以用于查询group的数量，而`[]`则可以返回匹配部分的每一个`()`分隔的group, 其中`[0]`返回整个匹配的字符串，而[1]...[N]返回第N个子group. 例如：
+``` ruby
+pattern = /^(\w+)\s*=\s*(\w+)\s*(#*.*)$/
+testStr1 = "key = value1"
+testStr2 = "key = value2 #a comment"
+mat1 = pattern.match(testStr1)
+mat2 = pattern.match(testStr2)
+#mat1.length = mat2.length = 4
+# mat1[0] = "key = value1", mat1[1] = "key", mat1[2] = "value1", mat1[3] = ""
+# mat2[0] = "key = value2 #a comment", mat2[1] = "key", mat2[2] = "value2", mat2[3] = "#a comment"
+```
+
+`offset`函数用于查询第N个子group的开始/结束 offset，参数为0时返回整个匹配的offset：
+
+``` ruby
+mat1.offset 0 # [0,12]
+mat1.offset mat1.length - 1 #[12,12]
+mat2.offset mat2.length - 1 #[13,23]
+testStr2.slice(13, 23)  # "#a comment"
+```
+
 ## 参考
 1. [ruby regular expressions](http://www.tutorialspoint.com/ruby/ruby_regular_expressions.htm)
