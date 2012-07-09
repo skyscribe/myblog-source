@@ -3,7 +3,7 @@ layout: post
 title: "lazy evaluation in Ruby&amp;Haskell"
 date: 2012-03-06 20:47
 comments: true
-categories: [ruby, Haskell, functional]
+categories: [ruby, haskell, functional]
 ---
 
 lazy evaluation 是函数式编程中的一个重要概念，和传统过程式语言中的cache/state变量恰恰相对；其对应的数值/运算仅仅在用到的时候才实际运算，如果没有调用就什么也不会做。对于构造起来比较昂贵的对象，lazy evaluation可以有效避免cache带来的额外开销，因为只要需要的部分运算被执行，不用的则根本什么也不做。这里以获取Fibonacci数列中的第N个数为例，采用无穷序列的办法比较两种语言的实现。
