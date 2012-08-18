@@ -3,7 +3,7 @@ layout: post
 title: "利用LD_PRELOAD发现程序潜在的问题"
 date: 2009-06-30 22:05
 comments: true
-categories: [c++, debugging, Unix]
+categories: [cpp, debugging, unix]
 ---
 
 Solaris上，常常可以用**LD_PRELOAD**辅助_mdb_做一些调试、测试工作，可以发现一些其它手段难以发现的问题；最近就遇到一个。

@@ -3,7 +3,7 @@ layout: post
 title: "Curl&amp;SSL issues on Solaris"
 date: 2009-07-27 22:29
 comments: true
-categories: [C++, SSL]
+categories: [cpp, ssl]
 ---
 
 源码编译libcurl的时候,由于使用的不是默认系统上的ssl库（开发服务器上有很多个版本），为了避免动态库链接问题，必须定制SSL。

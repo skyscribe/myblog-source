@@ -3,8 +3,8 @@ layout: post
 title: "Boost.CMake-解决boost升级问题"
 date: 2010-05-09 21:56
 comments: true
-categories: [c++, boost, tips]
-tags: [c++, boost]
+categories: [cpp, boost, tips]
+tags: [cpp, boost]
 ---
 
 

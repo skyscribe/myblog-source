@@ -3,7 +3,7 @@ layout: post
 title: "log4cpp-an excellent logging library for C++"
 date: 2009-06-18 22:22
 comments: true
-categories: [c++, logging, log4cpp]
+categories: [cpp, logging, log4cpp]
 ---
 
 对于一个上点规模的C++项目而言，Log的作用是毋庸置疑的，出问题的时候，看了Log，常见的问题处理起来自是方便不过，即使遇到麻烦的问题，也可以从ｌｏｇ总发现不少蛛丝马迹。因此一个严肃的项目应该从一开始就好好考虑如何打Log，便于分析、维护。

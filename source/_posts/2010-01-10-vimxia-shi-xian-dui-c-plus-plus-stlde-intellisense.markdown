@@ -3,7 +3,7 @@ layout: post
 title: "VIM下实现对C++ STL的IntelliSense"
 date: 2010-01-10 18:28
 comments: true
-categories: [c++, tips, vim]
+categories: [cpp, tips, vim]
 ---
 
 以前尝试过在vim下配置STL的Intellisense曾经没有成功；最近有空刚好仔细看了下vim的一些相对高级的manual，总算将[OmniCppComplete](http://www.vim.org/scripts/script.php?script_id=1520)主页上的效果给弄了出来（[这里](http://vissale.neang.free.fr/Vim/OmniCppComplete/ScreenShots/screenshots.htm)）。

@@ -3,7 +3,7 @@ layout: post
 title: "TCP几个小选项引发的思考"
 date: 2009-10-19 19:18
 comments: true
-categories: [Linux, debugging, C, networking]
+categories: [linux, debugging, C, networking]
 ---
 
 许久不查TCP相关的问题，今天下班前被一同事拦下要帮忙，说他碰到了__奇怪__的问题。

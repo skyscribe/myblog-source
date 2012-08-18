@@ -3,7 +3,7 @@ layout: post
 title: "利用CMake搭建开发build环境"
 date: 2009-07-01 21:51
 comments: true
-categories: [cmake, build, tips, c++]
+categories: [cmake, build, tips, cpp]
 ---
 对于经常在终端下写程序的non-windows程序员，Makefile绝对是最常用的工具，小到一个文件的简单的测试程序，大到数百个文件的商业软件，只需要有shell，一个make命令就可得到可运行的程序，Makefile绝对功不可没；可惜世界中不是那么太平，不但各个Posix系统的API千差万别，硬件平台各异，就连Makefile本身也有多个不兼容的格式，譬如GNU Makefile 拿到Solaris平台上就没法make下去，除非你有gmake，但gmake对并行编译的支持就没有solaris自带的dmake要好了。
 
