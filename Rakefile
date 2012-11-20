@@ -11,7 +11,7 @@ rsync_delete   = true
 deploy_default = "push"
 
 # This will be configured for you when you run config_deploy
-deploy_branch  = "master"
+deploy_branch  = "gh-pages"
 
 ## -- Misc Configs -- ##
 
@@ -257,6 +257,8 @@ multitask :push do
     system "git commit -m \"#{message}\""
     puts "\n## Pushing generated #{deploy_dir} website"
     system "git push origin #{deploy_branch} --force"
+    puts "\n## Pushing generated #{deploy_dir} to gitcafe website"
+    system "git push origin_gitcafe #{deploy_branch}:gitcafe-pages --force"
     puts "\n## Github Pages deploy complete"
   end
 end
