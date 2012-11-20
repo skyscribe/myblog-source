@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "c++11 新语言特性-1"
+title: "c++11 新特性1 语言特性改进"
 date: 2012-08-18 10:03
 comments: true
 categories: [cpp, clang, llvm, tips, cpp11, 学习笔记]
