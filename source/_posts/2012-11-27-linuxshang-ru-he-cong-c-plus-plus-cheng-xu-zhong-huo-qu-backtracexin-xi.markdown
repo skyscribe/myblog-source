@@ -17,7 +17,7 @@ backtrace 系列API
 
 Linux的manpage提供了如下的API原型：
 
-``` C++
+``` cpp 
 #include <execinfo.h>
 int backtrace(void **buffer, int size);
 char **backtrace_symbols(void *const *buffer, int size);
@@ -75,7 +75,7 @@ Google coredump library
 
 链接在[google code](http://code.google.com/p/google-coredumper/), 用法如下：
 
-``` c++
+``` cpp
 #include <google/coredumper.h>
 ...
 WriteCoreDump('core.myprogram');
