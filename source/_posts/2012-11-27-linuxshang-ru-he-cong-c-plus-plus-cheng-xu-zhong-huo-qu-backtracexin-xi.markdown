@@ -3,7 +3,8 @@ layout: post
 title: "Linux上如何从C++程序中获取backtrace信息"
 date: 2012-11-27 21:41
 comments: true
-categories: linux, c++, debug, calltrace
+categories: [linux, c, cpp, debug, backtrace]
+tags: [linux, debug, cpp]
 ---
 
 许多高级程序语言都提供了出错时候的调用栈打印功能，以方便尽快得到基本的出错信息，比如Java的runtime异常栈打印和Python的pdb库都提供了详细到行号的运行时信息以便调试。作为接近系统底层的高级语言，C/C++中要达到类似的功能却是很麻烦的，因为程序中的符号信息可能被strip，甚至编译器在优化阶段也会内嵌部分函数实现代码；一旦出现内存错误或者其它异常，所能借助的手段只有产生错误现场，事后拿到coredump来验尸了。
@@ -63,11 +64,54 @@ Segmentation fault (core dumped)
 
 如下边的例子：
 
+{% gist 4154534 test_bt_mt.cpp %}
+
+为了便于测试，代码中启动了3个线程，2个线程做正常操作，其中一个会产生**SIGSEGV**异常，而通过`sigaction`注册的信号处理函数却是全局的；当某个线程出发了SIGSEGV时，事先注册的信号处理函数就会运行在发生异常的上下文中 - 在信号处理函数`handleCore`中，通过额外的`sleep`可以看到另外2个线程的执行本身不被干扰可以继续执行下去，直到信号被重新触发，导致整个进程完全退出 - 此时所有线程的执行都会被终止。
+
+需要说明的是，`sleep`方式的线程同步仅仅是为了便于测试，例子中的输出顺序并不是确定的。要保证严谨的执行顺序，只能依靠线程同步或者CSP的方式进行。
+
+上述例子的输出如下：
+
+``` bash
+Threads started!
+THREAD-3061271360: normal operation begin...
+THREAD-3069664064: normal operation begin...
+THREAD-3078056768:bad operation follows...
+Signal caught:11, dumping backtrace...
+===[1]:./test_bt_mt(_Z10handleCorei+0x41) [0x804fb7e]
+===[2]:[0x524400]
+===[3]:./test_bt_mt(_Z7faultOpv+0x10) [0x804faf4]
+===[4]:./test_bt_mt(_Z7outFunci+0x1f) [0x804fb3b]
+===[5]:./test_bt_mt(_Z7outFunci+0x1a) [0x804fb36]
+===[6]:./test_bt_mt(_Z7outFunci+0x1a) [0x804fb36]
+===[7]:./test_bt_mt(_Z7outFunci+0x1a) [0x804fb36]
+===[8]:./test_bt_mt(_Z7outFunci+0x1a) [0x804fb36]
+===[9]:./test_bt_mt(_Z10threadFuncj+0x69) [0x804fd3a]
+===[10]:./test_bt_mt(_ZNSt5_BindIFPFvjEiEE6__callIvIEILj0EEEET_OSt5tupleIIDpT0_EESt12_Index_tupleIIXspT1_EEE+0x37) [0x80511a7]
+===[11]:./test_bt_mt(_ZNSt5_BindIFPFvjEiEEclIJEvEET0_DpOT_+0x2b) [0x805113b]
+===[12]:./test_bt_mt(_ZNSt12_Bind_simpleIFSt5_BindIFPFvjEiEEvEE9_M_invokeIIEEEvSt12_Index_tupleIIXspT_EEE+0x21) [0x80510d7]
+===[13]:./test_bt_mt(_ZNSt12_Bind_simpleIFSt5_BindIFPFvjEiEEvEEclEv+0x15) [0x805104f]
+===[14]:./test_bt_mt(_ZNSt6thread5_ImplISt12_Bind_simpleIFSt5_BindIFPFvjEiEEvEEE6_M_runEv+0x14) [0x8051004]
+===[15]:/usr/lib/i386-linux-gnu/libstdc++.so.6(+0xa6527) [0x962527]
+===[16]:/lib/i386-linux-gnu/libpthread.so.0(+0x6d4c) [0x1ded4c]
+===[17]:/lib/i386-linux-gnu/libc.so.6(clone+0x5e) [0x7b5d3e]
+THREAD-3061271360: normal operation end...
+THREAD-3069664064: normal operation end...
+Segmentation fault (core dumped)
+```
 
 mangling
 ==================================
+上述程序打印的backtrace中，函数名字的部分是已经被编译器mangle处理过的字符串，所以可读性并不是很好。不过GNU工具链提供了**demangle**工具**c++filt**来还原出可读性更好的函数名字，不过该工具必须通过shell来做处理，GNU似乎并[没有打算公开这些API](http://gcc.gnu.org/ml/gcc/2002-03/msg00076.html).
 
+在其它的Unix平台上，可以使用API来做转换，譬如HPUX上的*demangle*,Solaris上的cplus_demangle等。
 
+打印行号和函数名
+==================================
+**binutils**工具库中的**addr2line**可以很方便的将地址信息翻译为函数名字和行号的形势，当然前提是可执行程序文件必须是用*debug*模式编译的。如下的shell管道链可以很方便的给出每个地址的代码行信息：
+```bash
+./test_bt_mt | grep "===" | cut -d"[" -f3 | tr -d "]" | addr2line -e test_bt_mt
+```
 
 Google coredump library
 ===================================
@@ -83,5 +127,4 @@ WriteCoreDump('core.myprogram');
  * but we didn't crash.
   */
 ```
-
 
