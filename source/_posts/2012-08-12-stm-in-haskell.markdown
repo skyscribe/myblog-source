@@ -60,7 +60,7 @@ atomically :: STM a -> IO a
 ### 一个简单的例子
 
 下边是一个基本的例子：
-{% include_code [stm_example.hs] stm_example.hs %}
+{% include_code stm_example.hs stm_example.hs %}
 
 这里创建了一个初始为0的共享变量，并且启动三个线程分别做不同的操作：  
 - 第一个线程每隔20毫秒打印当前的变量   

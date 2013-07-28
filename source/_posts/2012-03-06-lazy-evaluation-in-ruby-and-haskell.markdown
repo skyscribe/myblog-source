@@ -13,7 +13,7 @@ lazy evaluation 是函数式编程中的一个重要概念，和传统过程式�
 ## Haskell 版本
 
 haskell版本的实现如下：
-{% include_code [fib.hs] fib.hs %}
+{% include_code fib.hs fib.hs %}
 
 这里的**fib**函数返回一个无穷序列，每一项是一个fibo数。`getIt`函数用于返回第_N_个数。`fetch`是一个wrapper函数，最后的main函数获取第10000个数作为测试。编译运行如下：
 ``` bash
@@ -30,7 +30,7 @@ sys 0m0.004s
 ## ruby版本
 
 作为一个非纯函数式语言，缺少pattern matching的支持，ruby版本需要借助lambda技巧来实现无穷序列。类似的版本如下：
-{% include_code [lazy_fib.rb] lazy_fib.rb %}
+{% include_code lazy_fib.rb lazy_fib.rb %}
 
 实现部分扩展了Enumerable，使之接受一个lambda作为构造参数，通过lambda来达到延迟调用的目的（也就是所谓的**lazy**).在其`each`函数中，先获取第一个元素，然后剩下的部分重新赋值给`@tree`.
 

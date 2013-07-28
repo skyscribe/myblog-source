@@ -41,7 +41,7 @@ awk 'BEGIN{
 
 * 多维数组 - 多个下表操作内部会被转换为**SUBSEP**连接的字符串为索引的array:
 
-{% include_code [array.awk] [lang:bash] awk_array.awk %}
+{% include_code array.awk lang:bash awk_array.awk %}
 
 需要获取具体下标的时候，可以使用`split`函数，传入**SUBSEP**作为分隔符，依次取得每一个下标。用于数据统计的时候，这一技巧相当顺手好用。
 

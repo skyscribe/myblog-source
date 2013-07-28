@@ -117,7 +117,7 @@ obj.call_func()
 ## 方法冲突的解决
 
 通过MIXIN，一个Class可以通过include来MIXIN多个module的方法。如果有两个module中存在同名的方法，行为又会如何？下边是一个例子：
-{% include_code [dupFuncInModule.rb] dupFuncInModule.rb %}
+{% include_code dupFuncInModule.rb dupFuncInModule.rb %}
 
 运行结果如下：
 ```
@@ -135,7 +135,7 @@ unique func in module2
 ### initialize方法处理
 
 module的initialize方法处理规则有些特殊，如下例：
-{% include_code [moduleInitialize.rb] moduleInit.rb %}
+{% include_code moduleInitialize.rb moduleInit.rb %}
 
 运行结果如下：
 ```
@@ -152,7 +152,7 @@ called with myvalue = test3
 - class虽然定义了`initialize`,但是没有调用`super`,则module的`initialize`不会别调到   
 
 这里还有另外一种情况即如果class的BaseClass也定义了initialize,如下述代码：
-{% include_code [moduleInitializeWithBase.rb] moduleInitConfuse.rb %}
+{% include_code moduleInitializeWithBase.rb moduleInitConfuse.rb %}
 
 结果如下:
 ```

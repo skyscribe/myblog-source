@@ -7,14 +7,8 @@ require "stringex"
 ssh_user       = "user@domain.com"
 ssh_port       = "22"
 document_root  = "~/website.com/"
-<<<<<<< HEAD
 rsync_delete   = true
 deploy_default = "push"
-=======
-rsync_delete   = false
-rsync_args     = ""  # Any extra arguments to pass to rsync
-deploy_default = "rsync"
->>>>>>> 9cf6b5ff8303522648ef01a510cca43c0563887c
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "gh-pages"
@@ -268,13 +262,9 @@ multitask :push do
     message = "Site updated at #{Time.now.utc}"
     system "git commit -m \"#{message}\""
     puts "\n## Pushing generated #{deploy_dir} website"
-<<<<<<< HEAD
     system "git push origin #{deploy_branch} --force"
     puts "\n## Pushing generated #{deploy_dir} to gitcafe website"
     system "git push origin_gitcafe #{deploy_branch}:gitcafe-pages --force"
-=======
-    system "git push origin #{deploy_branch}"
->>>>>>> 9cf6b5ff8303522648ef01a510cca43c0563887c
     puts "\n## Github Pages deploy complete"
   end
 end

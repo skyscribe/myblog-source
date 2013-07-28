@@ -99,7 +99,7 @@ end
     
     当对应的block里边包含return的时候，上述7中方式有些许的不同：
 
-    {% include_code [closure_return.rb] [lang:ruby] closure_return.rb %}
+    {% include_code closure_return.rb  closure_return.rb %}
 
     运行结果如下：
 
@@ -122,7 +122,7 @@ end
 
 - arity - 参数个数校验
 
-    {% include_code [closure_return.rb] [lang:ruby] closure_arity.rb %}
+    {% include_code closure_return.rb  closure_arity.rb %}
 
     运行结果如下：
 

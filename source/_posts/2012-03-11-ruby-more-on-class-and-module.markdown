@@ -54,7 +54,7 @@ Test.bar
 
 当 module 中的方法被新的类通过**MIXIN**方法包含的时候，module中定义的方法在新的类中是被定位为 class method 还是定义为 instance method? 答案取决于包含 module 的方法，这里是一段测试代码：
 
-{% include_code [test_include_extend.rb] test_include_extend.rb %}
+{% include_code test_include_extend.rb test_include_extend.rb %}
 
 运行结果如下：
 
@@ -80,7 +80,7 @@ undefined method `foo' for #<NewClsExtendModule:0x9c4436c>
 5. 在 module 中重写 included 方法，调用 extend 来扩展上述 sub module 中的 methods 为 class methods  
 
 例子如下：
-{% include_code [module_include_idiom.rb] module_include_idiom.rb %}
+{% include_code module_include_idiom.rb module_include_idiom.rb %}
 
 
 ## 参考链接
