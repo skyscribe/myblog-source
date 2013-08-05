@@ -7,7 +7,7 @@ categories: github
 ---
 
 GitHub的后台发生了更新，原来的**github.com**换成了**github.io**，导致原来的**octopress**的Rakefile变得不能正常工作。
-<--more-->
+<!--more-->
 
 Octopress升级的问题
 ==========================
