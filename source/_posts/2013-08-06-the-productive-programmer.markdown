@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "读 The productive Programmer "
+title: "The productive Programmer - 笔记"
 date: 2013-08-06 20:24
 comments: true
 categories: [reading, programming, tools, tips]
